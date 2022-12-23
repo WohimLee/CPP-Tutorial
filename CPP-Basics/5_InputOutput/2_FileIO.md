@@ -109,6 +109,30 @@ read (char * buffer, streamsize size);
 - buffer：是一块内存的地址，用来存储或读出数据
 - size：是一个整数值，表示要从缓存（buffer）中读出或写入的字符数
 
+>示例
+- static 关键字作用是：只能在本文将调用这个函数
+```c++
+static std::vector<uint8_t> load_file(const string& file){
+
+    ifstream in(file, ios::in | ios::binary);
+    if (!in.is_open())
+        return {};
+
+    in.seekg(0, ios::end);
+    size_t length = in.tellg();
+
+    std::vector<uint8_t> data;
+    if (length > 0){
+        in.seekg(0, ios::beg);
+        data.resize(length);
+
+        in.read((char*)&data[0], length);
+    }
+    in.close();
+    return data;
+}
+```
+
 
 &emsp;
 ## 5 状态标志符的验证(Verification of state flags)

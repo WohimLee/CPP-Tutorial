@@ -158,7 +158,7 @@ int main()
 
 
 &emsp;
-## 1.3 shared_ptr的拷贝和赋值
+## 1.3 shared_ptr 的拷贝和赋值
 
 &emsp;
 >示例

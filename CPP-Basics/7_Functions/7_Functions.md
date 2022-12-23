@@ -60,6 +60,31 @@ int main ()
   - 实现部分放在 .cpp
   - 如果没有头文件，main.cpp 直接 #include ".cpp"，会报错: 重定义
 
+>函数的返回值
+- 函数的返回值必须与函数声明的返回值一致
+- 如果加入条件语句，想返回空值，可以使用 {}
+```c++
+static std::vector<uint8_t> load_file(const string& file){
+
+    ifstream in(file, ios::in | ios::binary);
+    if (!in.is_open())
+        return {}; // 如果文件打开失败，就会返回一个空的 std::vector<uint8_t>
+
+    in.seekg(0, ios::end);
+    size_t length = in.tellg();
+
+    std::vector<uint8_t> data;
+    if (length > 0){
+        in.seekg(0, ios::beg);
+        data.resize(length);
+
+        in.read((char*)&data[0], length);
+    }
+    in.close();
+    return data;
+}
+```
+
 &emsp;
 # 2 函数参数（Function Arguments）
 
