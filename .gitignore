@@ -1,0 +1,8 @@
+
+
+# Files
+*.o
+
+# Folders
+objs
+.vscode
