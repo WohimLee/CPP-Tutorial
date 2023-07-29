@@ -3,6 +3,7 @@
 # Files
 *.o
 .DS_Store
+exec
 
 # Folders
 objs
