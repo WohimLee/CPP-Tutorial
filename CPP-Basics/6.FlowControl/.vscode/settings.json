@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "*.cu": "cpp",
-        "iostream": "cpp"
-    }
-}
