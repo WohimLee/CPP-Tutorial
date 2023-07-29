@@ -4,7 +4,6 @@ cpp_objs := $(patsubst src%cpp,objs%o,$(cpp_srcs))
 
 
 
-
 objs/%.o : src/%.cpp
 	@echo Compile source to objects
 	@mkdir -p $(dir $@)
