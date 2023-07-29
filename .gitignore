@@ -2,6 +2,7 @@
 
 # Files
 *.o
+.DS_Store
 
 # Folders
 objs
