@@ -1,12 +1,8 @@
-#include <bitset>
-#include <stdio.h>
-#include <iostream>
-using namespace std;
 
+#include <stdio.h>
 
 int main()
 {
-    
-    printf("we form" "a single" "string" "of characters""\n");
+
     return 0;
 }
