@@ -1,25 +1,37 @@
-#include <stdio.h>
-#include <iostream>
-using namespace std;
+
+
 
 int main()
 {
-    char choice;
-    cout << "Enter A, B or C: ";
-    cin >> choice;
-    switch (choice)
-    {
-        case 'A':
-            cout << "You entered A.\n";
-            break;
-        case 'B':
-            cout << "You entered B.\n";
-            break;
-        case 'C':
-            cout << "You entered C.\n";
-            break;
-        default:
-            cout << "Default code\n";
-    }
-    return 0;            
+
+  const char* m_scoring;
+  
+  switch(m_scoring)
+  {
+    case L1_NORM: 
+      m_scoring_object = new L1Scoring;
+      break;
+      
+    case L2_NORM:
+      m_scoring_object = new L2Scoring;
+      break;
+    
+    case CHI_SQUARE:
+      m_scoring_object = new ChiSquareScoring;
+      break;
+      
+    case KL:
+      m_scoring_object = new KLScoring;
+      break;
+      
+    case BHATTACHARYYA:
+      m_scoring_object = new BhattacharyyaScoring;
+      break;
+      
+    case DOT_PRODUCT:
+      m_scoring_object = new DotProductScoring;
+      break;
+    default:
+        
+  }
 }
