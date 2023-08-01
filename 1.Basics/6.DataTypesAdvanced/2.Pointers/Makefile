@@ -33,7 +33,7 @@ run : workspace/exec
 
 
 clean :
-	@rm -f objs workspace/exec
+	@rm -rf objs workspace/exec
 
 
 debug :

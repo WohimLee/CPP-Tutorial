@@ -1,9 +1,8 @@
 
 # 定义自己的数据类型
 
-&emsp;&emsp;
 # 1 typedef
-&emsp;&emsp;C++可以在现有数据类型的基础上定义自己的数据类型。我们将用关键字typedef来实现这种定义，它的形式是：
+C++可以在现有数据类型的基础上定义自己的数据类型。我们将用关键字typedef来实现这种定义，它的形式是：
 ```c++
 typedef existing_type new_type_name;
 ```
