@@ -1,18 +1,18 @@
+#include <stdio.h>
 #include <iostream>
-using namespace std;
 
-int main()
-{
-    int a[3][2][2] = {0,1,2,3,4,5,6,7,8,9,10,11};
-    // cout << a[0] << endl;
-    // cout << a[1] << endl; // 偏移16个字节，也就是第1块开始的位置
+int main() {
+    char str1[] = {'H', 'e','l','l','o','\0'};
+    char str2[] = {'H', 'e','l','l','o'};
+    char str3[] = "Hello"; // 字符串常量初始化，自动加 \0
 
-    // cout << a[0][0] << endl;
-    // cout << a[0][1] << endl; // 偏移 8 个字节，也就是每行开始的位置
+    std::cout << str1 << std::endl;
+    std::cout << str2 << std::endl; // 没有结束符，会一直打印内存后面接着的char 
+    std::cout << str3 << std::endl;
 
-    int* p = (int*)a;     // 多维数组的索引是每个维度对应的首地址
-    cout << p[0] << endl;
-    cout << p[10] << endl;
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n", str2);
+    printf("str3: %s\n", str3);
 
     return 0;
 }

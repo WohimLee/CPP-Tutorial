@@ -1,75 +1,42 @@
 
 
-
 cpp_srcs := $(shell find src -name "*.cpp")
-cpp_objs := $(patsubst %.cpp,%.o,$(cpp_srcs))
-cpp_objs := $(subst src/,objs/,$(cpp_objs))
+cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 
 
-compile_I := 
-link_L := 
-link_l :=  
+include_dirs := 
+linking_libs := 
+library_dirs := 
+
+I_options := $(include_dirs:%=-I%)
+l_options := $(linking_libs:%=-l%)
+L_options := $(library_dirs:%=-L%)
+r_options := $(library_dirs:%=-Wl,rpath=%)
+
+dynamic_options := -fPIC
+compile_options := -g -O3 -w -std=c++14 $(I_options)
+linking_options := $(l_options) $(L_options) $(r_options)
 
 
-compile_I := $(foreach item,$(compile_I),-I$(item))
-link_r := $(foreach item,$(link_L),-Wl,-rpath=$(item))
-link_L := $(foreach item,$(link_L),-L$(item))
-link_l := $(foreach item,$(link_l),-l$(item))
-
-
-compile_flags := -m64 -O3 -g -fpic -std=c++11 $(compile_I)
-link_flags    := $(link_L) $(link_l) $(link_r)
-
-
-debug :
-	@echo $(compile_flags)
-
-
-#-------------------- 统一编译成.o文件
 objs/%.o : src/%.cpp
-	@echo Compile Source to Objects
+	@echo [INFO]: Compile Source to Object
 	@mkdir -p $(dir $@)
-	@g++ -c $^ -o $@ $(compile_flags)
+	@g++ -c $^ -o $@ $(compile_options)
 
-
-objects : $(cpp_objs)
-
-
-#-------------------- 编静态库
-
-lib/libmyfuncstatic.a : objs/func.o
-	@echo Compile Objects to Static Lib
+workspace/exec : $(cpp_objs)
+	@echo [INFO]: Link Object to Executable
 	@mkdir -p $(dir $@)
-	@ar -r $@ $< 
+	@g++ $^ -o $@ $(linking_options)
 
-static : lib/libmyfuncstatic.a
-
-#-------------------- 编动态库
-lib/libmyfuncshared.so : objs/func.o
-	@echo Compile Objects to Shared Lib
-	@mkdir -p $(dir $@)
-	@g++ -shared $^ -o $@
-
-shared : lib/libmyfuncshared.so
-
-#-------------------- 链接成可执行文件
-
-workspace/exec : objs/main.o 
-	@echo Link Objects to Executable
-	@mkdir -p $(dir $@)
-	@g++ $^ -o $@ $(link_flags)
-
-
-
-run : workspace/exec 
+run : workspace/exec
 	@./$<
 
 
-
-libclean :
-	@rm -rf lib 
-
 clean :
-	@rm -rf objs workspace/exec lib
+	@rm -f objs workspace/exec
+
+
+debug :
+	@echo $(cpp_objs)
 
 .PHONY : run clean debug
