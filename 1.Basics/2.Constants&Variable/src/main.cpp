@@ -1,10 +1,12 @@
-
 #include <stdio.h>
+#include <iostream>
+
+#define PI 3.1415926
+
 
 int main()
 {
-    char* str = "Hello World\n";
-    printf("%c\n", 'a');
-    printf("%s", str);
+    auto a = 20;
+    std::cout << typeid(a).name() << std::endl;
     return 0;
 }

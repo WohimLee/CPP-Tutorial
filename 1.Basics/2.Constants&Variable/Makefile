@@ -1,7 +1,5 @@
 
 
-
-
 cpp_srcs := $(shell find src -name "*.cpp")
 cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 

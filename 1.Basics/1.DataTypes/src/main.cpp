@@ -2,12 +2,9 @@
 
 int main(){
 
-   printf("%-*s: %d Bytes\n", 10, "int*", sizeof(int*));
-   printf("%-*s: %d Bytes\n", 10, "char*", sizeof(char*));
-   printf("%-*s: %d Bytes\n", 10, "float*", sizeof(float*));
-   printf("%-*s: %d Bytes\n", 10, "double*", sizeof(double*));
-   printf("%-*s: %d Bytes\n\n", 10, "long int*", sizeof(long int*));
-   printf("%-*s: %d Bytes\n", 10, "short int*", sizeof(short int*));
-
+   printf("size of char*: %d bytes.\n", sizeof(char*));
+   printf("size of int*: %d bytes.\n", sizeof(int*));
+   printf("size of float*: %d bytes.\n", sizeof(float*));
+   
    return 0;
 }
