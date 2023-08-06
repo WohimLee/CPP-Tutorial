@@ -1,32 +1,42 @@
 
 
-
-# target : prequisties
-# [tab]@command
-
 cpp_srcs := $(shell find src -name "*.cpp")
-cpp_objs := $(patsubst src%cpp,objs%o,$(cpp_srcs))
+cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
+
+
+include_dirs := 
+linking_libs := 
+library_dirs := 
+
+I_options := $(include_dirs:%=-I%)
+l_options := $(linking_libs:%=-l%)
+L_options := $(library_dirs:%=-L%)
+r_options := $(library_dirs:%=-Wl,rpath=%)
+
+dynamic_options := -fPIC
+compile_options := -g -O3 -w -std=c++14 $(I_options)
+linking_options := $(l_options) $(L_options) $(r_options)
 
 
 objs/%.o : src/%.cpp
-	@echo Compile source to objects
+	@echo [INFO]: Compile Source to Object
 	@mkdir -p $(dir $@)
-	@g++ -c $^ -o $@ -I/datav/MyLesson/2_Cpp/3_CC++_Programing_Basics/7_Functions/include
+	@g++ -c $^ -o $@ $(compile_options)
 
 workspace/exec : $(cpp_objs)
-	@echo Linking
+	@echo [INFO]: Link Object to Executable
 	@mkdir -p $(dir $@)
-	@g++ $^ -o $@
+	@g++ $^ -o $@ $(linking_options)
 
 run : workspace/exec
 	@./$<
 
+
 clean :
-	@rm -rf objs workspace/exec 
+	@rm -rf objs workspace/exec
+
 
 debug :
-	@echo $(cpp_srcs)
 	@echo $(cpp_objs)
 
-
-.PHONY : run debug clean
+.PHONY : run clean debug

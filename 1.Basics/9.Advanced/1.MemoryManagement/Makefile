@@ -1,40 +1,42 @@
 
+
 cpp_srcs := $(shell find src -name "*.cpp")
-cpp_objs := $(patsubst %.cpp,%.o,$(cpp_srcs))
-cpp_objs := $(subst src/,objs/,$(cpp_objs))
+cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 
-include_paths := /datav/MyLesson/2_Cpp/3_CC++_Programing_Basics/9_C++Advanced/4_MemoryManagement/src
-library_paths :=
-link_library  := 
 
-I_option := $(include_paths:%=-I%)
-L_option := $(library_paths:%=-L%)
-l_option := $(link_library:%=-l%)
-# r_option := $(library_paths:%=-Wl,-rpath=%)
+include_dirs := 
+linking_libs := 
+library_dirs := 
 
-compile_options := -m64 -O3 -g -w -std=c++11 $(I_option)
-link_options    := $(l_option) $(L_option)
+I_options := $(include_dirs:%=-I%)
+l_options := $(linking_libs:%=-l%)
+L_options := $(library_dirs:%=-L%)
+r_options := $(library_dirs:%=-Wl,rpath=%)
 
-debug :
-	@echo $(I_option)
+dynamic_options := -fPIC
+compile_options := -g -O3 -w -std=c++14 $(I_options)
+linking_options := $(l_options) $(L_options) $(r_options)
 
 
 objs/%.o : src/%.cpp
-	@echo Compile Source to Objects
+	@echo [INFO]: Compile Source to Object
 	@mkdir -p $(dir $@)
 	@g++ -c $^ -o $@ $(compile_options)
 
 workspace/exec : $(cpp_objs)
-	@echo Link Objects to Executable
+	@echo [INFO]: Link Object to Executable
 	@mkdir -p $(dir $@)
-	@g++ $^ -o $@ $(link_options)
+	@g++ $^ -o $@ $(linking_options)
 
-
-run :workspace/exec
+run : workspace/exec
 	@./$<
 
 
 clean :
 	@rm -rf objs workspace/exec
 
-.PHONY : run clean
+
+debug :
+	@echo $(cpp_objs)
+
+.PHONY : run clean debug
