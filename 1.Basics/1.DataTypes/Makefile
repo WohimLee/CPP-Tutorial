@@ -11,7 +11,7 @@ l_options := $(link_library:%=-l%)
 L_options := $(library_path:%=-L%)
 r_options := $(library_path:%=-Wl,-rpath=%)
 
-compile_options := -O3 -g -std=c++11 $(I_options) #-fpic 
+compile_options := -O3 -g -std=c++11 -w $(I_options) #-fpic 
 link_options    := $(l_options) $(L_options) #$(r_options)
 
 objs/%.o : src/%.cpp
