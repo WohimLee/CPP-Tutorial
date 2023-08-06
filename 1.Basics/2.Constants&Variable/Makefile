@@ -1,28 +1,35 @@
-
-
 cpp_srcs := $(shell find src -name "*.cpp")
 cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 
+include_paths := 
+link_library  := 
+library_path  := 
 
-cpp_compile_flags := -m64 -g -O3 -fpic -std=c++11
 
+I_options := $(include_paths:%=-I%)
+l_options := $(link_library:%=-l%)
+L_options := $(library_path:%=-L%)
+r_options := $(library_path:%=-Wl,-rpath=%)
+
+compile_options := -O3 -g -std=c++11 $(I_options) #-fpic 
+link_options    := $(l_options) $(L_options) #$(r_options)
 
 objs/%.o : src/%.cpp
+	@echo Compile $^
 	@mkdir -p $(dir $@)
-	@g++ -c $^ -o $@
+	@g++ -c $^ -o $@ $(compile_options)
 
 workspace/exec : $(cpp_objs)
-	@mkdir -p $(dir $@)
-	@g++ $^ -o $@
+	@echo Link $@
+	@g++ $^ -o $@ $(link_options)
 
 run : workspace/exec
 	@./$<
 
+clean :
+	@rm -rf objs workspace/exec
 
 debug :
-	
-clean : 
-	@rm -rf objs workspace/exec 
+	@echo $(cpp_srcs)
 
-.PHONY : clean debug run
-
+.PHONY : debug run clean
