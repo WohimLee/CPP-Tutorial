@@ -4,7 +4,7 @@ cpp_srcs := $(shell find src -name "*.cpp")
 cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 
 
-include_dirs := 
+include_dirs := /Users/azen/Desktop/myAir/Work/Workspace/Tutorials/CPP-Tutorial/1.Basics/7.Functions/include
 linking_libs := 
 library_dirs := 
 
