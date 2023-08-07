@@ -6,22 +6,31 @@ struct Camera{
     double fy;
     double cx;
     double cy;
-}cam1, *pCam2;
+}cam1, cam2;
+
+// struct Test{
+//     int a; // 4
+//     char b; // 1
+//     float c; // 4
+//     double d; // 8
+// }test;
+
+struct Test{
+    double d; // 8
+    char b; // 1
+    int a; // 4
+    float c; // 4
+}test;
 
 int main()
 {
-    Camera* pCam3;
-    pCam3 = &cam1;
+    printf("size of Camera: %lu\n", sizeof(Camera));
+    printf("size of cam1  : %lu\n", sizeof(cam1));
+    printf("size of 5*sizeof(double): %lu\n", 5*sizeof(double));
 
-    pCam3->fx = 500;
-    pCam3->fy = 500;
-    (*pCam3).cx = 320;
-    (*pCam3).cy = 240;
-
-    printf("cam1.fx = %lf\n", cam1.fx);
-    printf("cam1.fy = %lf\n", cam1.fy);
-    printf("cam1.cx = %lf\n", cam1.cx);
-    printf("cam1.cy = %lf\n", cam1.cy);
-
+    printf("size of Test: %lu\n", sizeof(Test));
+    printf("size of test  : %lu\n", sizeof(test));
+    printf("size of int+char+float+double: %lu\n", 
+        sizeof(int)+sizeof(char)+sizeof(float)+sizeof(double));
     return 0;
 }
