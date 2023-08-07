@@ -1,35 +1,23 @@
-#include <stdio.h>
 
 #include <stdio.h>
 
 int main()
 {
-    int a[3][2][2] = {0,1,2,3,4,5,6,7,8,9,10,11};
+    int a = 10;
+    int* pInt = &a;
+    int** ppInt  = &pInt;
+    // int** ppInt = &b; // 报错，必须存的是指针的地址
 
-    // address of block 0; int*[2][2] const
-    printf("value of a  : %p\n", a);
-    printf("value of a+1: %p\n", a+1);
-    // interval = 4*4Bytes = 16Bytes
-    printf("interval = %d\n\n", 4*4);
+    printf("value of pInt: %p\n", pInt);
+    printf("address of pInt: %p\n\n", &pInt);
 
-    // address of block 1, row 0; int*[2] const
-    printf("value of a[1]  : %p\n", a[1]);
-    printf("value of a[1]+1: %p\n", a[1]+1);
-    // interval = 2*4Bytes = 8Bytes
-    printf("interval = %d\n\n", 2*4);
+    printf("value of ppInt: %p\n", ppInt);
+    printf("address of ppInt: %p\n\n", &ppInt);
 
-
-    // address of block 2, row 1, col 0; int* const
-    printf("value of a[2][1]  : %p\n", a[2][1]);
-    printf("value of a[2][1]+1: %p\n", a[2][1]+1);
-    // interval = 1*4Bytes = 4Bytes
-    printf("interval = %d\n\n", 1*4);
-
-
-    // Syntatic Sugar 语法糖
-    printf("value of a[2][0][0]  : %d\n", a[2][0][1]);
-    printf("Syntatic Sugar: equivalent to:\n");
-    printf("value of *(a[2][0]+1): %d\n", *(a[2][0]+1));
-
+    // 拜托🙏🏻不要那么丧心病狂 
+    // CUDA 也就用到了二级指针, 你非要搞多级, 要上天吗
+    int*** pppInt = &ppInt; 
+    printf("value of pppInt: %p\n", pppInt);
+    printf("address of pppInt: %p\n", &pppInt);
     return 0;
 }

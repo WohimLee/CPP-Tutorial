@@ -1,27 +1,27 @@
-#include <iostream>
-#include <string.h>
-using namespace std;
+#include <stdio.h>
 
-struct movies_t
-{
-    char title[50];
-    int year;
-};
-
-struct person_t
-{
-    char name[50];
-    char email[50];
-    movies_t amovie;
-}a, b;
-
+struct Camera{
+    double focal=500;
+    double fx;
+    double fy;
+    double cx;
+    double cy;
+}cam1, *pCam2;
 
 int main()
 {
-    // a.amovie.title = ;
-    a.amovie.year = 10;
-    
+    Camera* pCam3;
+    pCam3 = &cam1;
 
-    
+    pCam3->fx = 500;
+    pCam3->fy = 500;
+    (*pCam3).cx = 320;
+    (*pCam3).cy = 240;
+
+    printf("cam1.fx = %lf\n", cam1.fx);
+    printf("cam1.fy = %lf\n", cam1.fy);
+    printf("cam1.cx = %lf\n", cam1.cx);
+    printf("cam1.cy = %lf\n", cam1.cy);
+
     return 0;
 }
