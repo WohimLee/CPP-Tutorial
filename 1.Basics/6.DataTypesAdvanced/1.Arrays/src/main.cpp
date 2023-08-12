@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-int main() {
+int main(){
   
     float v[3] = {1, 2, 3};
     // float w[3] = {1, 2, 3};
