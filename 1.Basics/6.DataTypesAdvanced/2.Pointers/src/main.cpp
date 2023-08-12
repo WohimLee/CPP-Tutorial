@@ -3,21 +3,21 @@
 
 int main()
 {
-    int a = 10;
-    int* pInt = &a;
-    int** ppInt  = &pInt;
-    // int** ppInt = &b; // 报错，必须存的是指针的地址
+    int nElem = 10;
+    int array[nElem]; // array: int(*)[n]
+    for(int i=0; i<nElem; i++)
+        array[i]= 30+i;
 
-    printf("value of pInt: %p\n", pInt);
-    printf("address of pInt: %p\n\n", &pInt);
+    int* p1 = array; // 数组名
+    int** pp1 = &p1;
+    // int** pp2 = &array; // 报错
 
-    printf("value of ppInt: %p\n", ppInt);
-    printf("address of ppInt: %p\n\n", &ppInt);
+    // 从上面看好像 p1 和 array 类型就是相同的
+    // 但是为什么报错？因为: array: int(*)[n]
+    int (*p2)[nElem] = &array; // 这样就可以
 
-    // 拜托🙏🏻不要那么丧心病狂 
-    // CUDA 也就用到了二级指针, 你非要搞多级, 要上天吗
-    int*** pppInt = &ppInt; 
-    printf("value of pppInt: %p\n", pppInt);
-    printf("address of pppInt: %p\n", &pppInt);
+    // 注意: int* p1 = array 将 int(*)[n] 转成了 int*
+    // 多维数组, 也只有最后一维的指针有这样的 syntatic sugar
+
     return 0;
 }
