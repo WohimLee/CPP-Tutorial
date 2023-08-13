@@ -1,28 +1,26 @@
 #include <stdio.h>
 
-void printMessage(){
-  printf("Enter your message here...");
+
+
+
+// long unsigned int len(int array[]){
+
+//     return (long unsigned int)(sizeof(array)/sizeof(array[0]));
+// }
+
+
+void printArray(int array[]){
+    printf("sizeof array   : %ld\n", sizeof(array));
+    printf("sizeof array[0]: %ld\n", sizeof(array[0]));
 }
 
-int add(int a, int b){
-  return a + b;
-};
 
-float minus(float a, float b){
-  printf("a - b = %f\n", a-b);
-  // 无 return
-}
+int main(){
+    int array[10];
+    for(int i=0; i<10; i++)
+        array[i] = 10+i;
+    printf("sizeof array   : %ld\n", sizeof(array));
+    printf("sizeof array[0]: %ld\n", sizeof(array[0]));
 
-int main()
-{
-  int a = 10;
-  int b = 20;
-
-  int res1    = add(a, b);
-  float res2  = add(a, b);
-  double res3 = add(a, b);
-  printf("res1: %d\n", res1);
-  printf("res2: %f\n", res2);
-  printf("res3: %lf\n", res3);
-  return 0;
+    printArray(array);
 }

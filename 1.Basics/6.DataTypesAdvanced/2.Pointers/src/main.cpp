@@ -3,24 +3,15 @@
 // int main(int argc, char *argv[])
 int main(int argc, char** argv)
 {
-    printf("输入的参数共有: %d条\n", argc);
-    for (int i = 0; i < argc; i++)
-        printf("%s\n", argv[i]);
+    int array[] = {1, 2, 3, 4, 5};
 
+    int (&refArray)[5] = array;
+    // 错误语法: 
+    // int &refArray[5]  = array; 必须带括号
+    // int (&refArray)[] = array; 元素数必须一致
 
-    int nElem = 10;
-    int array[nElem]; // array: int(*)[n]
-    for(int i=0; i<nElem; i++)
-        array[i]= 30+i;
-    int* pArray = array;
-    int** ppArray = &pArray;
-
-    int n = 5;
-    printf("value of Array[i]     : %d, value of array   : %p\n", array[n], array);
-    printf("value of pArray[i]    : %d, value of pArray  : %p\n", pArray[n], pArray);
-    printf("value of ppArray[i]   : %d, value of ppArray : %p\n", ppArray[n], ppArray);
-    // *ppArray = pArray
-    printf("value of (*ppArray)[n]: %d, value of *ppArray: %p\n", (*ppArray)[n], (*ppArray));
+    printf("value of array   : %p\n", array);
+    printf("value of refArray: %p\n", refArray);
 
     return 0;
 }
