@@ -1,32 +1,26 @@
-
 #include <stdio.h>
 
-int main()
+// int main(int argc, char *argv[])
+int main(int argc, char** argv)
 {
+    printf("输入的参数共有: %d条\n", argc);
+    for (int i = 0; i < argc; i++)
+        printf("%s\n", argv[i]);
 
-    int a  = 10;
-    int b  = a;
-    int &c = a;
 
-    printf("value of a: %d\n", a);
-    printf("value of b: %d\n", b);
-    printf("value of c: %d\n", c);
+    int nElem = 10;
+    int array[nElem]; // array: int(*)[n]
+    for(int i=0; i<nElem; i++)
+        array[i]= 30+i;
+    int* pArray = array;
+    int** ppArray = &pArray;
 
-    // int numbers[5];
-    // int* p;
-    // p = numbers;
-    // *p = 10;
-    // p++;
-    // *p = 20;
-    // p = &numbers[2];
-    // *p = 30;
-    // p = numbers+3;
-    // *p = 40;
-    // p = numbers;
-    // *(p+4) = 50;
-
-    // for (int i=0; i<5; i++)
-    //     printf("%d element: %d\n", i, numbers[i]);
+    int n = 5;
+    printf("value of Array[i]     : %d, value of array   : %p\n", array[n], array);
+    printf("value of pArray[i]    : %d, value of pArray  : %p\n", pArray[n], pArray);
+    printf("value of ppArray[i]   : %d, value of ppArray : %p\n", ppArray[n], ppArray);
+    // *ppArray = pArray
+    printf("value of (*ppArray)[n]: %d, value of *ppArray: %p\n", (*ppArray)[n], (*ppArray));
 
     return 0;
 }
