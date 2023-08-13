@@ -29,7 +29,7 @@ workspace/exec : $(cpp_objs)
 	@g++ $^ -o $@ $(linking_options)
 
 run : workspace/exec
-	@./$< a b c d
+	@./$<
 
 
 clean :

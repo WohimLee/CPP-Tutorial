@@ -1,26 +1,33 @@
 #include <stdio.h>
 
+void printArray(int num, int *array[]){
 
-
-
-// long unsigned int len(int array[]){
-
-//     return (long unsigned int)(sizeof(array)/sizeof(array[0]));
-// }
-
-
-void printArray(int array[]){
-    printf("sizeof array   : %ld\n", sizeof(array));
-    printf("sizeof array[0]: %ld\n", sizeof(array[0]));
+    int *ptr = (int*)array;
+    for(int i=0; i<num; i++)
+        printf("%d ", ptr[i]);
+    printf("\n");
 }
 
+void printArray(int num, int **array){
+    int *ptr = (int*)array;
+    for(int i=0; i<num; i++)
+        printf("%d ", ptr[i]);
+    printf("\n");
+}
 
-int main(){
+// int main(int argc, char *argv[])
+int main(int argc, char** argv){
+
+    printf("输入的参数共有: %d条\n", argc);
+    for (int i = 0; i < argc; i++)
+        printf("%s ", argv[i]);
+    printf("\n");
+
+
     int array[10];
     for(int i=0; i<10; i++)
         array[i] = 10+i;
-    printf("sizeof array   : %ld\n", sizeof(array));
-    printf("sizeof array[0]: %ld\n", sizeof(array[0]));
 
-    printArray(array);
+    printArray(10, (int**)&array);
+
 }
