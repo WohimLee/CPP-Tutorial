@@ -1,25 +1,32 @@
 #include <iostream>
 using namespace std;
 
-typedef enum {
-    // Not apply any rotation
-    ROTATION_IGNORE = -1,
-    // 0 degree rotation (natural orientation)
-    ROTATION_0   = 0,
-    // 90 degree rotation (natural orientation)
-    ROTATION_90  = 1,
-    // 180 degree rotation (natural orientation)
-    ROTATION_180 = 2,
-    // 270 degree rotation (natural orientation)
-    ROTATION_270 = 3
-}ScreenRotation;
+enum eSensor{
+    MONOCULAR=0,
+    STEREO=1,
+    RGBD=2
+};
+
+
+
 
 int main()
 {
-    ScreenRotation camera_rotation;
-    camera_rotation = ROTATION_0;
+    eSensor cam = MONOCULAR;
 
-    printf("Call function, set ScreenRotation: %d\n", camera_rotation);
+    switch(cam){
+        case MONOCULAR:
+            printf("Constructing MONOCULAR object.\n");
+            break;
+        case STEREO:
+            printf("Constructing STEREO object.\n");
+            break;
+        case RGBD:
+            printf("Constructing RGBD object.\n");
+            break;
+        default:
+            printf("Unknow Camera Sensor.\n");
+    }
 
     return 0;
 }

@@ -8,6 +8,7 @@ include_dirs :=
 linking_libs := 
 library_dirs := 
 
+
 I_options := $(include_dirs:%=-I%)
 l_options := $(linking_libs:%=-l%)
 L_options := $(library_dirs:%=-L%)
