@@ -4,7 +4,7 @@ cpp_srcs := $(shell find src -name "*.cpp")
 cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 
 
-include_dirs := 
+include_dirs := ./include
 linking_libs := 
 library_dirs := 
 
@@ -19,12 +19,12 @@ linking_options := $(l_options) $(L_options) $(r_options)
 
 
 objs/%.o : src/%.cpp
-	@echo [INFO]: Compile Source to Object
+	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
 	@g++ -c $^ -o $@ $(compile_options)
 
 workspace/exec : $(cpp_objs)
-	@echo [INFO]: Link Object to Executable
+	@echo [INFO]: Link $^ to $@
 	@mkdir -p $(dir $@)
 	@g++ $^ -o $@ $(linking_options)
 
