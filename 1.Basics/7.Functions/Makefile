@@ -6,9 +6,9 @@ cpp_srcs := $(shell find src -name "*.cpp")
 cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 
 
-include_dirs := 
+include_dirs := ./include
 linking_libs := test
-library_dirs := 
+library_dirs := ./lib
 
 I_options := $(include_dirs:%=-I%)
 l_options := $(linking_libs:%=-l%)
@@ -22,20 +22,20 @@ linking_options := $(l_options) $(L_options) $(r_options)
 $(MAIN.o) : $(MAIN)
 	@echo [INFO]: Compile $< to $@
 	@mkdir -p $(dir $@)
-	@g++ -c $< -o $@ $(compile_options) 
+	g++ -c $< -o $@ $(compile_options) 
 
 objs/%.o : src/%.cpp
 	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
-	@g++ -c $^ -o $@ $(compile_options) $(dynamic_options)
+	g++ -c $^ -o $@ $(compile_options) $(dynamic_options)
 
-lib/liborb.so : $(cpp_objs)
+lib/libtest.so : $(cpp_objs)
 	@echo [INFO]: Generate $@, including: $^
 	@mkdir -p $(dir $@)
-	@g++ -shared $^ -o $@
+	g++ -shared $^ -o $@
 
 
-dynamic : lib/liborb.so
+dynamic : lib/libtest.so
 
 
 workspace/exec : $(MAIN.o) dynamic
