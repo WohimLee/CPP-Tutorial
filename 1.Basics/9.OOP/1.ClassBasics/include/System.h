@@ -1,3 +1,5 @@
+#ifndef SYSTEM_H
+#define SYSTEM_H
 
 
 class Tracking;
@@ -14,6 +16,8 @@ public:
         RGBD=2
     };
 
+    
+
 public:
     void TrackMonocular();
 
@@ -24,3 +28,5 @@ private:
     LocalMapping* mpLocalMapper;
     LoopClosing* mpLoopCloser;
 };
+
+#endif // SYSTEM_H
