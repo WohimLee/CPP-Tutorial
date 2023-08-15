@@ -1,0 +1,5 @@
+#ifndef LOOPCLOSING_H
+#define LOOPCLOSING_H
+
+
+#endif // LOOPCLOSING_H
