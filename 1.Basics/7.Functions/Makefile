@@ -22,17 +22,17 @@ linking_options := $(l_options) $(L_options) $(r_options)
 $(MAIN.o) : $(MAIN)
 	@echo [INFO]: Compile $< to $@
 	@mkdir -p $(dir $@)
-	g++ -c $< -o $@ $(compile_options) 
+	@g++ -c $< -o $@ $(compile_options) 
 
 objs/%.o : src/%.cpp
 	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
-	g++ -c $^ -o $@ $(compile_options) $(dynamic_options)
+	@g++ -c $^ -o $@ $(compile_options) $(dynamic_options)
 
 lib/libtest.so : $(cpp_objs)
 	@echo [INFO]: Generate $@, including: $^
 	@mkdir -p $(dir $@)
-	g++ -shared $^ -o $@
+	@g++ -shared $^ -o $@
 
 
 dynamic : lib/libtest.so
@@ -41,7 +41,7 @@ dynamic : lib/libtest.so
 workspace/exec : $(MAIN.o) dynamic
 	@echo [INFO]: Link $< to $@
 	@mkdir -p $(dir $@)
-	g++ $< -o $@ $(linking_options)
+	@g++ $< -o $@ $(linking_options)
 
 run : workspace/exec
 	./$<

@@ -6,9 +6,9 @@ cc_srcs := $(shell find src -name "*.cc")
 cc_objs := $(patsubst src/%.cc,objs/%.o,$(cc_srcs))
 
 
-include_dirs := /Users/azen/Desktop/myAir/Work/Workspace/Tutorials/CPP-Tutorial/1.Basics/8.OOP/1.ClassBasics/include
+include_dirs := ./include
 linking_libs := orb
-library_dirs := /Users/azen/Desktop/myAir/Work/Workspace/Tutorials/CPP-Tutorial/1.Basics/8.OOP/1.ClassBasics/lib
+library_dirs := ./lib
 
 I_options := $(include_dirs:%=-I%)
 l_options := $(linking_libs:%=-l%)
@@ -41,7 +41,7 @@ dynamic : lib/liborb.so
 workspace/exec : $(MAIN.o) dynamic
 	@echo [INFO]: Link $< to $@
 	@mkdir -p $(dir $@)
-	g++ $< -o $@ $(linking_options)
+	@g++ $< -o $@ $(linking_options)
 
 run : workspace/exec
 	@./$<
