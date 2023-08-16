@@ -19,16 +19,19 @@ dynamic_options := -fPIC
 compile_options := -g -O3 -w -std=c++14 $(I_options)
 linking_options := $(l_options) $(L_options) $(r_options)
 
+# Compile main
 $(MAIN.o) : $(MAIN)
 	@echo [INFO]: Compile $< to $@
 	@mkdir -p $(dir $@)
 	@g++ -c $< -o $@ $(compile_options) 
 
+# Compile all the source code
 objs/%.o : src/%.cpp
 	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
 	@g++ -c $^ -o $@ $(compile_options) $(dynamic_options)
 
+# Make a .so lib
 lib/libtest.so : $(cpp_objs)
 	@echo [INFO]: Generate $@, including: $^
 	@mkdir -p $(dir $@)
@@ -37,7 +40,7 @@ lib/libtest.so : $(cpp_objs)
 
 dynamic : lib/libtest.so
 
-
+# Link to a executable
 workspace/exec : $(MAIN.o) dynamic
 	@echo [INFO]: Link $< to $@
 	@mkdir -p $(dir $@)

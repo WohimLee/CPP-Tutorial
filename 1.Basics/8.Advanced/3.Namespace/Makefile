@@ -1,13 +1,13 @@
 
-MAIN   := Examples/main.cpp
-MAIN.o := objs/main.o
+MAIN   := Examples/mono.cc
+MAIN.o := objs/mono.o
 
-cpp_srcs := $(shell find src -name "*.cpp")
-cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
+cc_srcs := $(shell find src -name "*.cc")
+cc_objs := $(patsubst src/%.cc,objs/%.o,$(cc_srcs))
 
 
 include_dirs := ./include
-linking_libs := test
+linking_libs := orb
 library_dirs := ./lib
 
 I_options := $(include_dirs:%=-I%)
@@ -24,18 +24,18 @@ $(MAIN.o) : $(MAIN)
 	@mkdir -p $(dir $@)
 	@g++ -c $< -o $@ $(compile_options) 
 
-objs/%.o : src/%.cpp
+objs/%.o : src/%.cc
 	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
 	@g++ -c $^ -o $@ $(compile_options) $(dynamic_options)
 
-lib/libtest.so : $(cpp_objs)
+lib/liborb.so : $(cc_objs)
 	@echo [INFO]: Generate $@, including: $^
 	@mkdir -p $(dir $@)
 	@g++ -shared $^ -o $@
 
 
-dynamic : lib/libtest.so
+dynamic : lib/liborb.so
 
 
 workspace/exec : $(MAIN.o) dynamic
@@ -44,7 +44,7 @@ workspace/exec : $(MAIN.o) dynamic
 	@g++ $< -o $@ $(linking_options)
 
 run : workspace/exec
-	./$<
+	@./$<
 
 
 clean :
