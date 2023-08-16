@@ -1,27 +1,26 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
-void printArray(int n, int* ptr){
-    for(int i=0; i<n; i++)
-        printf("%d ", ptr[i]);
-    printf("\n");
-}
+struct Camera{
+    double focal;
+    double fx;
+    double fy;
+    double cx;
+    double cy;
+};
 
 int main()
 {
-    int pSrc[] = {1, 2, 3, 4, 5};
+    int* pInt = new int;
+    if(pInt) printf("new an array: int[5].\n");
+    else printf("new failed.\n");
 
-    int* pDst1 = (int*)malloc(5*sizeof(int));
-    memcpy(pDst1, pSrc, 3*sizeof(int));
-    printArray(3, pDst1);
 
-    int* pDst2 = (int*)memcpy(pDst1, pSrc, 3*sizeof(int));
-    printArray(3, pDst2);
-    printf("value of pDst1: %p\n", pDst1);
-    printf("value of pDst2: %p\n", pDst2);
+    Camera* pCam = new Camera[5];
+    if(pCam) printf("new an array: Camera[5].\n");
+    else printf("new failed.\n");
 
-    free(pDst1);
-    pDst1 = NULL;
+    delete pInt;
+    delete[] pCam;
+
     return 0;
 }
