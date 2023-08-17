@@ -1,12 +1,22 @@
-#include <iostream>
-// using namespace std;
-namespace xxx = std;
+
+#include <stdio.h>
+
+namespace ORB_SLAM2{
+    void init(){
+        printf("init function in ORB_SLAM2.\n");
+    }
+}
+
+namespace ORB_SLAM3{
+    void init(){
+        printf("init function in ORB_SLAM3.\n");
+    }
+}
 
 int main()
 {
-    std::cout << "Hello" << std::endl;
-
-    xxx::cout << "Hello" << xxx::endl;
-
+    using namespace ORB_SLAM2;
+    // using namespace ORB_SLAM3;
+    init();
     return 0;
 }
