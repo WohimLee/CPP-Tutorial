@@ -1,6 +1,7 @@
 
 
-cpp_srcs := $(shell find src -name "*.cpp")
+# cpp_srcs := $(shell find src -name "*.cc" -o -name "*.cpp" -o -name "*.c")
+cpp_srcs := $(wildcard src/*.cc src/*.cpp src/*.c)
 cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
 
 
@@ -37,6 +38,6 @@ clean :
 
 
 debug :
-	@echo $(cpp_objs)
+	@echo $(cpp_srcs)
 
 .PHONY : run clean debug

@@ -1,0 +1,31 @@
+# MNIST Dataset config
+name: MNIST
+root: /home/nerf/datav/Dataset/MNIST/raw/
+train:
+  - labels:
+      magicNum: 2049
+      numItems: 60000
+      file : train-labels-idx1-ubyte
+
+    images:
+      magicNum: 2051
+      numImgs: 60000
+      numRows: 28
+      numCols: 28
+      file : train-images-idx3-ubyte
+    
+test:
+  - labels:
+      magicNum: 2049
+      numItems: 10000
+      file : t10k-labels-idx1-ubyte
+
+    images:
+      magicNum: 2051
+      numImgs: 10000
+      numRows: 28
+      numCols: 28
+      file : t10k-images-idx3-ubyte
+
+
+
