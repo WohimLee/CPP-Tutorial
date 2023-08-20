@@ -44,7 +44,7 @@ workspace/exec : $(MAIN.o) dynamic
 	@g++ $< -o $@ $(linking_options)
 
 run : workspace/exec
-	./$<
+	@./$< aaa bbb ccc
 
 
 clean :

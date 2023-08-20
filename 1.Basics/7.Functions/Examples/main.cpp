@@ -1,14 +1,17 @@
 
 #include <stdio.h>
-#include "add.hpp"
-#include "minus.hpp"
+
+void printArray(int num, int** array){
+    int *ptr = (int*)array;
+    for(int i=0; i<num; i++)
+        printf("%d ", ptr[i]);
+    printf("\n");
+}
 
 
 int main(int argc, char** argv){
 
-    int a=10, b=5;
-    printf("a+b = %d\n", add(a, b));
-    printf("a-b = %d\n", minus(a, b));
+    
 
     return 0;
 }
