@@ -7,9 +7,9 @@
 
     >Code
     ```c++
-    struct frame{
+    typedef struct{
         /* Code here */
-    };
+    }frame;
 
     void TMULT(frame* Tab, frame* Tbc, frame *res){
         /* Code here */
@@ -35,3 +35,21 @@
     }
     ```
 
+$$A=\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} \\
+a_{21} & a_{22} & a_{23} & a_{24} \\
+a_{31} & a_{32} & a_{33} & a_{34} \\
+a_{41} & a_{42} & a_{43} & a_{44} 
+\end{bmatrix}，B=\begin{bmatrix}
+b_{11} & b_{12} & b_{13} & b_{14} \\
+b_{21} & b_{22} & b_{23} & b_{24} \\
+b_{31} & b_{32} & b_{33} & b_{34} \\
+b_{41} & b_{42} & b_{43} & b_{44} 
+\end{bmatrix}$$
+
+$$A@B = M = \begin{bmatrix}
+m_{11} & m_{12} & m_{13} & m_{14} \\
+m_{21} & m_{22} & m_{23} & m_{24} \\
+m_{31} & m_{32} & m_{33} & m_{34} \\
+m_{41} & m_{42} & m_{43} & m_{44} 
+\end{bmatrix}$$

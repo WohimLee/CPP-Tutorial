@@ -1,17 +1,46 @@
 
 #include <stdio.h>
 
-void printArray(int num, int** array){
-    int *ptr = (int*)array;
-    for(int i=0; i<num; i++)
-        printf("%d ", ptr[i]);
-    printf("\n");
+typedef struct {
+    double matrix[4][4];
+}frame;
+
+void TMULT(frame* Tab, frame* Tbc, frame *res){
+    for(int i=0; i<4; i++){
+        for(int j=0; j<4; j++){
+            res->matrix[i][j] = 0;
+            for(int k=0; k<4; k++){
+                res->matrix[i][j] += Tab->matrix[i][k] * Tbc->matrix[k][j];
+            }
+        }
+    }
 }
 
 
 int main(int argc, char** argv){
 
-    
+    frame Tab = {
+        1.291745248951440272e-01, -5.623929167659633688e-01,  8.167179129231746382e-01, 7.446654875896275838e-01,
+        -9.916218745661643519e-01, -7.326062452930534596e-02,  1.063905013404032041e-01, 5.752737313980316181e-01,
+        1.008641502896713695e-16, -8.236182902686466356e-01, -5.671445247332920214e-01, 1.066633865905884049e+00,
+        0.000000000000000000e+00,  0.000000000000000000e+00,  0.000000000000000000e+00, 1.000000000000000000e+00};
+    frame Tbc = {
+        0.677472,  0.000000, -0.735549, -1.201561,
+         0.000000, -1.000000, -0.000000,  0.719373,
+        -0.735549,  0.000000, -0.677472, -2.996411,
+         0.000000,  0.000000,  0.000000,  1.000000
+    };
+
+    frame res;
+
+    TMULT(&Tab, &Tbc, &res);
+
+    for(int i=0; i<4; i++){
+        for(int j=0; j<4; j++){
+            printf("%9f ", res.matrix[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
