@@ -1,17 +1,27 @@
-#include <iostream>
+
+#include <stdio.h>
+#include <math.h>
+
+typedef unsigned int uint32_t;
+
+
+// float one_blob_subwarp_aligned(
+//     int(*kernel)(), const float* data_in, 
+//     const uint32_t elem_index, 
+//     const uint32_t encoded_index, 
+//     const uint32_t num_bins_log2)
+//     {
+
+
+// }
+
+
 
 
 int main() {
-    float focal = 0.5;
-    float Xreal = 2;
-    float Yreal = 4;
-    float Zreal = 6;
-    
-    float xCam = focal * Xreal / Zreal;
-    float yCam = focal * Yreal / Zreal;
-    printf("像平面x方向坐标:%.3f\n", xCam);
-    printf("像平面y方向坐标:%.3f\n", yCam);
+    uint32_t n_bit = 4;
+    printf("     160 >> 4 = %u\n", 160 >> 4);
+    printf("160/pow(2, 4) = %u\n", (uint32_t)(160/pow(2, 4)));
 
-    return 0;
     return 0;
 }
