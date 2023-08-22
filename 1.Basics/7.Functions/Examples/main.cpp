@@ -1,9 +1,15 @@
 
 #include <stdio.h>
 
-typedef struct {
+// typedef struct {
+//     double matrix[4][4];
+// }frame;
+
+struct frame{
     double matrix[4][4];
-}frame;
+};
+
+
 
 void TMULT(frame* Tab, frame* Tbc, frame *res){
     for(int i=0; i<4; i++){
