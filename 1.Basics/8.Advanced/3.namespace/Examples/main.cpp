@@ -1,9 +1,12 @@
 
 #include <iostream>
 
-using namespace std;
+namespace xxx = std;
+
 
 int main()
 {
+    xxx::cout << "hello" << xxx::endl;
+
     return 0;
 }
