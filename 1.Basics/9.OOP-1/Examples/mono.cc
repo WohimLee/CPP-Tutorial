@@ -1,11 +1,5 @@
-
-#include <stdio.h>
-#include "Map.h"
-#include "System.h"
-#include "Tracking.h"
-#include "LocalMapping.h"
-#include "LoopClosing.h"
-
+#include <iostream>
+using namespace std;
 
 class System
 {
@@ -20,33 +14,16 @@ public:
     };
 
 public:
-    System(){}; // 因为有了其它构造函数, 必须自己写默认构造函数
-    System(const eSensor sensor):
-    mSensor(sensor), mbReset(false), mbResetActiveMap(false),
-    mbActivateLocalizationMode(false), mbDeactivateLocalizationMode(false), mbShutDown(false)
-    {
-        printf("System constructor with initialization.\n");
-        printf("mbReset: %s\n", mbReset == true ? "True" : "False");
-        printf("mbResetActiveMap: %s\n", mbResetActiveMap == true ? "True" : "False");
-        printf("mbActivateLocalizationMode: %s\n", mbActivateLocalizationMode == true ? "True" : "False");
-        printf("mbDeactivateLocalizationMode: %s\n", mbDeactivateLocalizationMode == true ? "True" : "False");
-        printf("mbShutDown: %s\n", mbShutDown == true ? "True" : "False");
-    }
+    System(){}; // 如果不写, 不能使用 System SLAM;
+    System(bool init){};
 
 private:
     eSensor mSensor;
-    bool mbReset;
-    bool mbResetActiveMap;
-    bool mbActivateLocalizationMode;
-    bool mbDeactivateLocalizationMode;
-    bool mbShutDown;
-
 };
 
-int main(int argc, char** argv){
-    System SLAM1; // 如果补上默认构造函数, 这里会报错
-    System SLAM2(System::MONOCULAR);
+int main(int argc, char** argv)
+{
+    
 
     return 0;
 }
-

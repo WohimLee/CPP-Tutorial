@@ -32,6 +32,12 @@ public:
         printf("mbDeactivateLocalizationMode: %s\n", mbDeactivateLocalizationMode == true ? "True" : "False");
         printf("mbShutDown: %s\n", mbShutDown == true ? "True" : "False");
     }
+public:
+    // void TrackMonocular(); // 没有实现
+    // void TrackMonocular(){}; // 空实现
+    void TrackMonocular(){
+        printf("Call function: void TrackMonocular()\n");
+    }; // 具体实现
 
 private:
     eSensor mSensor;

@@ -21,6 +21,7 @@ objs/%.o : src/%.cpp
 
 workspace/exec : $(cpp_objs)
 	@echo Link $@
+	@mkdir -p $(dir $@)
 	@g++ $^ -o $@ $(link_options)
 
 run : workspace/exec
