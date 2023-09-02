@@ -1,16 +1,21 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <stdio.h>
+namespace ORB_SLAM2
+{
+
+class MapPoint;
+class KeyFrame;
+
 class Map
 {
 public:
-    Map(){
-        printf("Map constructor Map().\n");
-    };
-    Map(int initKFid){
-        printf("Map constructor Map(int initKFid).\n");
-    };
+
+    void AddKeyFrame(int KF);
+    void AddMapPoint(int MP);
+    void EraseMapPoint(int MP);
+    void EraseKeyFrame(int KF);
 };
 
+} //namespace ORB_SLAM
 #endif // MAP_H

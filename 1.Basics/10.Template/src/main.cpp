@@ -1,78 +1,42 @@
-
-
 #include <iostream>
 using namespace std;
-
 
 template <class T1>
 class Student
 {
-    T1 score[3];
-    public :
-        Student(T1 a, T1 b, T1 c);
-        T1 getAverage();
+T1 score[3];
+public :
+    Student(T1 a, T1 b, T1 c);
 
-        template <typename T2>
-        void showinfo(T2 index);
+    template <typename T2>
+    void showinfo(T2 index){
+        cout << score[index] << endl;
+    };
 };
 
 template <class T1>
-Student<T1>::Student(T1 a, T1 b, T1 c){
+Student<T1>::Student(T1 a, T1 b, T1 c)
+{
     score[0] = a;
     score[1] = b;
     score[2] = c;
 }
 
-template <class T1>
-T1 Student<T1>::getAverage(){
-    return (score[0] + score[1] + score[2])/3;
-}
-
-template <class T1>
-template<typename T2>
-void Student<T1>::showinfo(T2 index){
-    cout << score[index] << endl;
-}
+// // 类外实现也可以, 不建议
+// template<class T1>
+// template<typename T2>
+// void Student<T1>::showinfo(T2 index)
+// {
+//     cout << score[index] << endl;
+// }
 
 
 int main()
 {
-    Student<float> s(70.5, 85.5, 90.0);
+    Student<float> s(68.5, 85.4, 90.0);
     s.showinfo(0);
     s.showinfo(1);
     s.showinfo(2);
 
-    cout << "The average: " << s.getAverage() << endl;
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
