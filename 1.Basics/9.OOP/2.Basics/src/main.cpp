@@ -1,18 +1,21 @@
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 class Person
 {
 public :
-    static int m_age;
-           int id;
-    static void func1();
-           void func2();
+    Person& PersonAddAge(Person &p)
+    {
+        this->m_age += p.m_age;
+        return *this;
+    }
+public:
+    int m_age;
 };
 
-int main(int argc, char** argv)
+int main()
 {
-    Person p1, p2;
 
     return 0;
 }
