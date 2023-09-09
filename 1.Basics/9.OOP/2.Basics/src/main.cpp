@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 using namespace std;
 
@@ -5,21 +7,20 @@ class Person;
 
 class Police
 {
-public :
-    Police(){};
-    void getinfo(Person* person);
+public:
+    void getInfo(Person* person);
 };
+
 
 class Person
 {
-    // friend class Police;
-    friend void Police::getinfo(Person* person);
+    friend void Police::getInfo(Person* person);
 public:
     Person(){};
     Person(int age, long deposit);
-public :
+public:
     int age;
-private :
+private:
     long deposit;
 };
 
@@ -29,15 +30,17 @@ Person::Person(int _age, long _deposit)
     this->deposit = _deposit;
 }
 
-void Police::getinfo(Person* person)
+void Police::getInfo(Person* person)
 {
     cout << person->age << endl;
     cout << person->deposit << endl;
 }
 
-int main()
+
+int main(int argc, char** argv)
 {
+    Person person(18, 8888888);
     Police police;
-    Person man(34, 190000);
-    police.getinfo(&man);
+    police.getInfo(&person);
+    return 0;
 }
