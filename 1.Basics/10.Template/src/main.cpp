@@ -1,22 +1,32 @@
 #include <iostream>
 
-template <class T> 
-T GetMax(T a, T b)
-{
-    T res; // 在模板函数 GetMax() 里，类型 T 可以被用来声明新的对象
-    res = a > b ? a : b;
-    return res;
-}
+template <class T, int N>
+class Array {
+public:
+    T arr[N];  // Array of N elements of type T
 
-int main()
-{
-    int var1 = 5, var2 = 6;
-    float var3 = 10, var4 = 20;
-    int res1 = GetMax(var1, var2);       // 省略类型声明
-    float res2 = GetMax<float>(var3, var4); // 写类型声明
+    void fill(const T& value) {
+        for(int i = 0; i < N; ++i) {
+            arr[i] = value;
+        }
+    }
 
-    printf("res1 = %d\n", res1);
-    printf("res2 = %f\n", res2);
+    void print() const {
+        for(int i = 0; i < N; ++i) {
+            std::cout << arr[i] << " ";
+        }
+        std::cout << '\n';
+    }
+};
+
+int main() {
+    Array<int, 5> intArray;
+    intArray.fill(10);
+    intArray.print();  // Output: 10 10 10 10 10 
+
+    Array<double, 3> doubleArray;
+    doubleArray.fill(3.14);
+    doubleArray.print();  // Output: 3.14 3.14 3.14 
 
     return 0;
 }
