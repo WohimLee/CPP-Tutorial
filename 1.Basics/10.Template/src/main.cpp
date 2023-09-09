@@ -1,42 +1,22 @@
 #include <iostream>
-using namespace std;
 
-template <class T1>
-class Student
+template <class T> 
+T GetMax(T a, T b)
 {
-T1 score[3];
-public :
-    Student(T1 a, T1 b, T1 c);
-
-    template <typename T2>
-    void showinfo(T2 index){
-        cout << score[index] << endl;
-    };
-};
-
-template <class T1>
-Student<T1>::Student(T1 a, T1 b, T1 c)
-{
-    score[0] = a;
-    score[1] = b;
-    score[2] = c;
+    T res; // 在模板函数 GetMax() 里，类型 T 可以被用来声明新的对象
+    res = a > b ? a : b;
+    return res;
 }
-
-// // 类外实现也可以, 不建议
-// template<class T1>
-// template<typename T2>
-// void Student<T1>::showinfo(T2 index)
-// {
-//     cout << score[index] << endl;
-// }
-
 
 int main()
 {
-    Student<float> s(68.5, 85.4, 90.0);
-    s.showinfo(0);
-    s.showinfo(1);
-    s.showinfo(2);
+    int var1 = 5, var2 = 6;
+    float var3 = 10, var4 = 20;
+    int res1 = GetMax(var1, var2);       // 省略类型声明
+    float res2 = GetMax<float>(var3, var4); // 写类型声明
+
+    printf("res1 = %d\n", res1);
+    printf("res2 = %f\n", res2);
 
     return 0;
 }
