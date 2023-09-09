@@ -1,7 +1,8 @@
 
 
 &emsp;
-## 1.4 shared_ptr 计数器的递增递减
+# counter
+## 1 shared_ptr 计数器的递增递减
 - 当进行拷贝或赋值操作时，每个 shared_ptr 都会记录有多少个其他 shared_ptr 指向相同的对象
 - 每个 shared ptr 都有一个关联的计数器，通常称其为引用计数（reference count）
 - 计数器递增
@@ -71,7 +72,7 @@ int main()
 
 
 &emsp;
-## 1.4 shared_ptr 自动销毁所管理的对象
+## 2 shared_ptr 自动销毁所管理的对象
 - 当指向一个对象的最后一个 shared_ptr 被销毁时，shared_ptr类会自动销毁此对象
 - 它是通过另一个特殊的成员函数——析构函数（destructor）完成销毁工作的
 - 析构函数一般用来释放对象所分配的资源

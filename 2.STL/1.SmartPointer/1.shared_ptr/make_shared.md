@@ -1,7 +1,7 @@
 
 
 &emsp;
-## 1.2 make_shared 函数
+# make_shared
 - 最安全的分配和使用动态内存的方法是调用一个名为 make_shared 的标准库函数
 - 此函数在动态内存中分配一个对象并初始化它，返回指向此对象的 shared_ptr
 - make_shared 也定义在头文件 memory 中
