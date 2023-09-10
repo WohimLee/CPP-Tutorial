@@ -1,32 +1,43 @@
+
 #include <iostream>
 
-template <class T, int N>
-class Array {
+#ifndef __SIZE_TYPE__
+#define size_t long unsigned int
+#endif // __SIZE_TYPE__
+
+template<class T>
+class Vector
+{
 public:
-    T arr[N];  // Array of N elements of type T
-
-    void fill(const T& value) {
-        for(int i = 0; i < N; ++i) {
-            arr[i] = value;
-        }
+    Vector() : mnSize(0), mnCapacity(1), mpData(new T[mnCapacity]){};
+    ~Vector(){
+        delete[] mpData;
+        mpData = nullptr;
     }
-
-    void print() const {
-        for(int i = 0; i < N; ++i) {
-            std::cout << arr[i] << " ";
+    void push_back(T value){
+        if(mnSize == mnCapacity){
+            mnCapacity *= 2;
+            new_data = new T[mnCapacity];
+            for(size_t i=0; i < mnSize; i++)
+                new
         }
-        std::cout << '\n';
+        mpData[mnSize++] = value;
     }
+private:
+    T* mpData;
+    size_t mnSize;
+    size_t mnCapacity
 };
 
-int main() {
-    Array<int, 5> intArray;
-    intArray.fill(10);
-    intArray.print();  // Output: 10 10 10 10 10 
 
-    Array<double, 3> doubleArray;
-    doubleArray.fill(3.14);
-    doubleArray.print();  // Output: 3.14 3.14 3.14 
+
+int main(int argc, char** argv)
+{
+    Vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(2);
+
+
 
     return 0;
 }
