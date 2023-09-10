@@ -1,43 +1,33 @@
 
+
 #include <iostream>
 
-#ifndef __SIZE_TYPE__
-#define size_t long unsigned int
-#endif // __SIZE_TYPE__
-
-template<class T>
-class Vector
+template <class T>
+class Student
 {
 public:
-    Vector() : mnSize(0), mnCapacity(1), mpData(new T[mnCapacity]){};
-    ~Vector(){
-        delete[] mpData;
-        mpData = nullptr;
+    Student(T a, T b, T c){
+        score[0]=a;
+        score[1]=b;
+        score[2]=c;
     }
-    void push_back(T value){
-        if(mnSize == mnCapacity){
-            mnCapacity *= 2;
-            new_data = new T[mnCapacity];
-            for(size_t i=0; i < mnSize; i++)
-                new
-        }
-        mpData[mnSize++] = value;
-    }
-private:
-    T* mpData;
-    size_t mnSize;
-    size_t mnCapacity
-};
 
+    template <typename T2>
+    void showinfo(T2 index){
+        printf("score[%d]=%f\n", index, score[index]);
+    }
+
+private:
+    T score[3];
+};
 
 
 int main(int argc, char** argv)
 {
-    Vector<int> vec;
-    vec.push_back(1);
-    vec.push_back(2);
-
-
+    Student<float> s(55.5, 66.6, 77.7);
+    s.showinfo(0);
+    s.showinfo(1);
+    s.showinfo(2);
 
     return 0;
 }

@@ -1,6 +1,7 @@
+
 #include <iostream>
 
-class Person 
+class Person
 {
 public:
     Person(){
@@ -10,7 +11,7 @@ public:
 };
 
 Person::~Person(){
-    printf("Call destructor: Person::Person()\n");
+    printf("Call destructor: Person::~Person()\n");
 }
 
 class Adult : public Person
@@ -18,16 +19,17 @@ class Adult : public Person
 public :
     Adult(){
         printf("Call constructor: Adult::Adult()\n");
-    };
+    }
     ~Adult(){
-        printf("Call destructor: Adult::~Adult()\n");
-    };
+        printf("Call constructor: Adult::~Adult()\n");
+    }
 };
 
-int main(void)
-{
-    Person* a = new Adult();
 
-    delete a; 
+int main(int argc, char** argv)
+{
+    Person* p = new Adult();
+    delete p;
+
     return 0;
 }

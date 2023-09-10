@@ -1,20 +1,24 @@
 #include <iostream>
+
 class Base
 {
-public :
+public:
     Base(){printf("Call constructor: Base::Base()\n");}
-    ~Base(){printf("Call destructor : Base::~Base()\n");}
+    ~Base(){printf("Call destructor: Base::~Base()\n");}
 };
 
-class Derive : public Base{
+
+class Derive : public Base
+{
 public:
     Derive(){printf("Call constructor: Derive::Derive()\n");}
-    ~Derive(){printf("Call destructor : Derive::~Derive()\n");}
+    ~Derive(){printf("Call destructor: Derive::~Derive()\n");}
 };
+
 
 int main()
 {
-    Derive* a = new Derive;
-    delete a;
+    Derive* pObj = new Derive;
+    delete pObj;
     return 0;
 }
