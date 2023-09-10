@@ -1,7 +1,6 @@
 
 &emsp;
 # Appendix
-
 ## struct & union
 
 struct 和 union 与 class 非常相似
