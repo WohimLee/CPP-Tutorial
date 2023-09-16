@@ -1,42 +1,29 @@
 #include <iostream>
-#include <list>
+#include <vector>
 using namespace std;
 
-void printList(const list<int>&l)
-{
-    for (const auto& item : l)
-        cout << item << " ";
-    cout << endl;
+void printVector(vector<int>& v){
+    for (vector<int>::iterator it = v.begin(); it != v.end(); it++){
+        cout << *it << " ";
+    }cout << endl;
 }
 
+int main(){
+    vector<int>v1;
+    for (int i = 0; i < 10; i++){
+        v1.push_back(i);
+    }
+    printVector(v1);
 
+    vector<int>v2;
+    v2 = v1;
+    printVector(v2);
 
-int main()
-{
-    list<int> L1;
-    L1.push_back(1);
-    L1.push_back(7);
-    L1.push_back(5);
-    L1.push_back(10);
+    vector<int>v3;
+    v3.assign(v1.begin(), v1.end());
+    printVector(v3);
 
-    printList(L1);
-
-    
-    return 0;
+    vector<int>v4;
+    v4.assign(10, 100);
+    printVector(v4);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
