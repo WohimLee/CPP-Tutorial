@@ -3,7 +3,7 @@
 在日常工作中经常需要安装一些库, 与 apt install 不同, 更多时候我们只能选用源码编译安装。源码编译安装主要有以下几个步骤: 
 1. 确定安装软件的稳定版本
 2. 在 GitHub 上下载源码
-3. 仔细阅读官方 GitHub 或者官网, 安装依赖性
+3. 仔细阅读官方 GitHub 或者官网, 安装依赖项
 4. 创建 build 文件夹
 5. 配置 cmake 信息
 6. 安装
@@ -70,6 +70,7 @@ cd build
 执行
 ```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=[自定义最终安装路径] ..
+## 示例
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/shenlan/3rdParty/opencv-3.4.8 ..
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/shenlan/3rdParty/eigen-3.1.0 ..
 ```
