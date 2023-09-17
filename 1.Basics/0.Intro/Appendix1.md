@@ -13,7 +13,7 @@
 >调出 `task.json` 文件
 - Terminal -> Config Task -> Create tasks file from template -> Others
 <div align=center>
-    <image src="imgs/task.png" width=600>
+    <image src="imgs/task.png" width=>
 </div>
 
 &emsp;

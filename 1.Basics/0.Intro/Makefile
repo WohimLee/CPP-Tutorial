@@ -3,11 +3,13 @@ cpp_srcs := $(shell find src -name "*.cpp")
 cpp_objs := $(patsubst src%cpp,objs%o,$(cpp_srcs))
 
 
+
+compile_options := -g -O3 -w
+
 objs/%.o : src/%.cpp
 	@echo Compile source to objects
 	@mkdir -p $(dir $@)
-	@g++ -c $^ -o $@ 
-
+	@g++ -c $^ -o $@ $(compile_options)
 
 
 workspace/exec : $(cpp_objs)

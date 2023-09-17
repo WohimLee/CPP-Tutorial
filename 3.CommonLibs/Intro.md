@@ -70,8 +70,9 @@ cd build
 执行
 ```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=[自定义最终安装路径] ..
-## 示例
+## 示例 1
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/shenlan/3rdParty/opencv-3.4.8 ..
+## 示例 2
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/shenlan/3rdParty/eigen-3.1.0 ..
 ```
 在build文件夹下执行
