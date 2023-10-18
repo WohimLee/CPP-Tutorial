@@ -18,12 +18,12 @@ linking_options := $(l_options) $(L_options) $(r_options)
 
 
 objs/%.o : src/%.cpp
-	@echo Compile $^ to $@
+	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
 	@g++ -c $^ -o $@ $(compile_options)
 
 workspace/exec : $(cpp_objs)
-	@echo Link $^ to $@
+	@echo [INFO]: Link $^ to $@
 	@mkdir -p $(dir $@)
 	@g++ $^ -o $@ $(linking_options)
 
