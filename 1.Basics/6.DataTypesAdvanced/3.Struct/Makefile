@@ -1,4 +1,8 @@
 
+MAIN := Examples/example2.c
+# MAIN := Examples/test.c
+
+TARGET := $(notdir $(basename $(MAIN)))
 
 cpp_srcs := $(shell find src -name "*.cpp")
 cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
@@ -19,22 +23,24 @@ compile_options := -g -O3 -w -std=c++14 $(I_options)
 linking_options := $(l_options) $(L_options) $(r_options)
 
 
-objs/%.o : src/%.cpp
-	@echo [INFO]: Compile Source to Object
+# Compile TARGET
+objs/$(TARGET).o : $(MAIN) 
+	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
-	@g++ -c $^ -o $@ $(compile_options)
+	@gcc -c $< -o $@ $(compile_options)
 
-workspace/exec : $(cpp_objs)
-	@echo [INFO]: Link Object to Executable
+
+workspace/$(TARGET) : objs/$(TARGET).o 
+	@echo [INFO]: Linking $^ to $@
 	@mkdir -p $(dir $@)
-	@g++ $^ -o $@ $(linking_options)
+	@gcc $^ -o $@ $(linking_options)
 
-run : workspace/exec
+run : workspace/$(TARGET)
 	@./$<
 
 
 clean :
-	@rm -rf objs workspace/exec
+	@rm -rf objs workspace/$(TARGET)
 
 
 debug :
