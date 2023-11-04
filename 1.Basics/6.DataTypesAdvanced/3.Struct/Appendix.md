@@ -1,6 +1,5 @@
 &emsp;
-# Appendix - struct 在 C 和 C++ 中的区别
-## 1 C 语言中
+# Appendix - C 语言的 struct
 
 >struct
 - 声明必须带上 `struct` 关键字
@@ -59,4 +58,20 @@ int main(int argc, char** argv)
                i, msg1[i].a, msg1[i].b, msg1[i].index);
     return 0;
 }
+```
+
+>在 struct 内用本身的 struct
+- 要加关键字 struct
+```c
+// 错误使用
+typedef struct ArcNode {
+    int nAdjNodeIdx;
+    ArcNode* pNextArc; // Use 'struct ArcNode' to refer to the type within its own definition.
+} ArcNode;
+
+// 正确使用
+typedef struct ArcNode {
+    int nAdjNodeIdx;
+    struct ArcNode* pNextArc; // Use 'struct ArcNode' to refer to the type within its own definition.
+} ArcNode;
 ```

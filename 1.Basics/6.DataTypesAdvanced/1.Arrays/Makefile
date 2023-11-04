@@ -1,42 +1,43 @@
 
+MAIN := Examples/example1.c
+HEADERS := 
+# MAIN := Examples/test.c
 
-cpp_srcs := $(shell find src -name "*.cpp")
-cpp_objs := $(patsubst src/%.cpp,objs/%.o,$(cpp_srcs))
+TARGET := $(notdir $(basename $(MAIN)))
 
+c_srcs := $(shell find src -name "*.c")
+c_objs := $(patsubst src/%.c,objs/%.o,$(c_srcs))
 
-include_dirs := 
-linking_libs := 
-library_dirs := 
+include_dirs := include
+linking_libs := m
 
 I_options := $(include_dirs:%=-I%)
 l_options := $(linking_libs:%=-l%)
-L_options := $(library_dirs:%=-L%)
-r_options := $(library_dirs:%=-Wl,rpath=%)
 
-dynamic_options := -fPIC
-compile_options := -g -O3 -w -std=c++14 $(I_options)
-linking_options := $(l_options) $(L_options) $(r_options)
+compile_options := -g $(I_options)
+linking_options := $(l_options)
 
 
-objs/%.o : src/%.cpp
-	@echo [INFO]: Compile Source to Object
+# Compile TARGET
+objs/$(TARGET).o : $(MAIN) $(HEADERS)
+	@echo [INFO]: Compile $^ to $@
 	@mkdir -p $(dir $@)
-	@g++ -c $^ -o $@ $(compile_options)
+	@gcc -c $< -o $@ $(compile_options)
 
-workspace/exec : $(cpp_objs)
-	@echo [INFO]: Link Object to Executable
+
+workspace/$(TARGET) : objs/$(TARGET).o 
+	@echo [INFO]: Linking $^ to $@
 	@mkdir -p $(dir $@)
-	@g++ $^ -o $@ $(linking_options)
+	@gcc $^ -o $@ $(linking_options)
 
-run : workspace/exec
+run : workspace/$(TARGET)
 	@./$<
 
 
-clean :
-	@rm -rf objs workspace/exec
-
-
 debug :
-	@echo $(cpp_objs)
+	@echo $(TARGET)
 
-.PHONY : run clean debug
+clean :
+	@rm -rf objs lib workspace/$(TARGET)
+
+.PHONY : debug clean run
