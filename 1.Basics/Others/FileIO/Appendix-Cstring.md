@@ -113,3 +113,18 @@ int main() {
 ```
 
 
+&emsp;
+## sprintf
+- 将格式化字符串写入到 str 中
+>声明
+```cpp
+int sprintf(char *str, const char *format, ...)
+```
+- str: This is the pointer to an array of char elements where the resulting C string is stored.
+- format: This is the String that contains the text to be written to buffer. It can optionally contain embedded format tags that are replaced by the values specified in subsequent additional arguments and formatted as requested. Format tags prototype: %[flags][width][.precision][length]specifier, as explained below
+
+>Example
+```cpp
+sprintf(temp, "%02d:%02d:%02d", hours, minutes, seconds);
+```
+
