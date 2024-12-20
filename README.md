@@ -25,8 +25,3 @@ Linux 下 C/C++ 编程
 ### 3 CommonLibs: 常用的库
 ### 4 Multithreading Concurrency: 多线程与并发
 
-&emsp;
-<div align=center>
-    <img src="./imgs/QRcode.png" width=150>
-    <h4>If u wanna buy me a cup of coffee.</h>
-</div>
